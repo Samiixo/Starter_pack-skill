@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1600px; height:900px; background:#090909; font-family:'Segoe UI',system-ui,sans-serif; color:#f2f2f2; padding:50px 66px; }
+  h2 { font-size:42px; font-weight:700; letter-spacing:-.02em; }
+  .lead { margin-top:10px; font-size:20px; font-weight:300; color:#8a8a8a; }
+  .flow { margin-top:34px; display:flex; }
+  .st { flex:1; border:1px solid #232323; padding:20px 16px; display:flex; flex-direction:column; }
+  .st + .st { border-left:none; }
+  .st.hot { border-color:#D6FF00; }
+  .n { font-family:Consolas,monospace; font-size:15px; color:#D6FF00; }
+  .t { margin-top:10px; font-size:20px; font-weight:600; }
+  .r { margin-top:10px; font-size:15px; font-weight:300; color:#8f8f8f; line-height:1.45; flex:1; }
+  .wd { margin-top:13px; font-family:Consolas,monospace; font-size:12px; color:#6e6e6e; border-top:1px solid #1e1e1e; padding-top:10px; }
+  table { margin-top:32px; width:100%; border-collapse:collapse; }
+  th { text-align:left; font-family:Consolas,monospace; font-size:13px; letter-spacing:.13em; text-transform:uppercase; color:#6e6e6e; padding:0 14px 12px 0; border-bottom:1px solid #262626; font-weight:400; }
+  td { padding:14px 14px 14px 0; border-bottom:1px solid #1a1a1a; font-size:16px; font-weight:300; color:#b9b9b9; vertical-align:top; line-height:1.45; }
+  td.id { font-family:Consolas,monospace; font-size:14px; color:#D6FF00; white-space:nowrap; width:200px; }
+  td.lv { font-family:Consolas,monospace; font-size:13px; white-space:nowrap; width:80px; }
+  .f { color:#ff6b6b; } .w { color:#ffb84d; }
+</style></head><body>
+  <h2>Ритм сессии: пять шагов</h2>
+  <div class="lead">На каждом шаге известно, что читать и что писать. Без этого агент либо читает всё подряд, либо не читает ничего.</div>
+  <div class="flow">
+    <div class="st hot"><div class="n">01</div><div class="t">Заходишь</div><div class="r">Хвост журнала и состояние гита. Узнаёшь, что уже сделано, до того как что-то менять</div><div class="wd">читает: STATE-LOG, git</div></div>
+    <div class="st"><div class="n">02</div><div class="t">Разведываешь</div><div class="r">Каталог говорит, где что. Потом нужный раздел README. Потом код. Не читать наугад</div><div class="wd">читает: INDEX, README</div></div>
+    <div class="st"><div class="n">03</div><div class="t">Меняешь</div><div class="r">Точечно, в рамках задачи. Архитектурные решения - сначала слово человеку</div><div class="wd">пишет: код</div></div>
+    <div class="st"><div class="n">04</div><div class="t">Проверяешь</div><div class="r">Сборка и тесты как минимум. Для UI и рантайма - живой запуск, если без риска</div><div class="wd">пишет: ничего</div></div>
+    <div class="st"><div class="n">05</div><div class="t">Финализируешь</div><div class="r">Журнал, каталог, карта, разделы README. Пропущенный шаг - и следующая сессия повторит работу</div><div class="wd">пишет: STATE-LOG, INDEX, MAP</div></div>
+  </div>
+  <table>
+    <tr><th>Проверка doc_lint</th><th>Уровень</th><th>Что означает провал</th></tr>
+    <tr><td class="id">broken_links</td><td class="lv f">FAIL</td><td>Документ указывает в пустоту. Именно это нарушал исходный комплект: ссылался на README.md, которого в нём нет</td></tr>
+    <tr><td class="id">required_files</td><td class="lv f">FAIL</td><td>Одного из четырёх файлов нет. Ритм распадается: журнал без каталога не подскажет, где что лежит</td></tr>
+    <tr><td class="id">placeholders_left</td><td class="lv f">FAIL</td><td>Остались [скобки] из шаблона. Значит, первичная настройка не доведена до конца</td></tr>
+    <tr><td class="id">known_typos</td><td class="lv f">FAIL</td><td>Опечатка в файле инструкций. Каждый агент, который его прочитает, скопирует её дальше</td></tr>
+    <tr><td class="id">charset</td><td class="lv f">FAIL</td><td>Эмодзи, стрелки или тире, которых нет в cp1251. На консоли Windows это мусор</td></tr>
+    <tr><td class="id">one_tree</td><td class="lv f">FAIL</td><td>Дерево проекта размножено по двум файлам. Через месяц они разойдутся</td></tr>
+    <tr><td class="id">mixed_language</td><td class="lv w">WARN</td><td>Английское слово вклеено в русскую прозу. Проверяется по белому списку технических терминов</td></tr>
+    <tr><td class="id">state_log_grows_tail</td><td class="lv w">WARN</td><td>Журнал молчит давно или в нём меньше двух записей. Ритм остановился</td></tr>
+  </table>
+</body></html>

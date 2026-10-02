@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Test and tool artifacts
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+*.bak
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# NOTE: docs/original/ IS tracked. It is the verbatim original pack, kept so
+# the v2.0 changes can be diffed instead of taken on trust. Do not ignore it,
+# and do not "fix" its punctuation: its defects are the evidence.

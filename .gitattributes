@@ -1,0 +1,19 @@
+# Normalize line endings for text files
+*.md        text eol=lf
+*.py        text eol=lf
+*.sh        text eol=lf
+*.txt       text eol=lf
+*.html      text eol=lf
+*.json      text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+.gitignore  text eol=lf
+.gitattributes text eol=lf
+LICENSE     text eol=lf
+
+# Binary assets must never be line-ending mangled
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary

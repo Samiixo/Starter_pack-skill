@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1600px; height:860px; background:#090909; font-family:'Segoe UI',system-ui,sans-serif; color:#f2f2f2; padding:50px 66px; }
+  h2 { font-size:42px; font-weight:700; letter-spacing:-.02em; }
+  .lead { margin-top:10px; font-size:20px; font-weight:300; color:#8a8a8a; }
+  .grid { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .card { border:1px solid #232323; padding:24px 26px; }
+  .card.hot { border-color:#D6FF00; }
+  .nm { font-family:Consolas,monospace; font-size:23px; color:#f2f2f2; font-weight:600; }
+  .card.hot .nm { color:#D6FF00; }
+  .q { margin-top:11px; font-size:18px; font-weight:400; color:#e0e0e0; }
+  .d { margin-top:11px; font-size:16px; font-weight:300; color:#8f8f8f; line-height:1.5; }
+  .w { margin-top:14px; font-family:Consolas,monospace; font-size:13px; color:#6e6e6e; border-top:1px solid #1e1e1e; padding-top:11px; }
+  .foot { margin-top:32px; border:1px solid #2a2a2a; padding:22px 26px; display:flex; gap:34px; align-items:center; }
+  .ft { font-size:19px; font-weight:500; color:#D6FF00; white-space:nowrap; }
+  .fd { font-size:16px; font-weight:300; color:#b9b9b9; line-height:1.5; }
+</style></head><body>
+  <h2>Каждый файл отвечает на свой вопрос</h2>
+  <div class="lead">Один факт живёт в одном файле и ссылается из остальных. Два места, где одно описано по-разному, разъезжаются за месяц.</div>
+  <div class="grid">
+    <div class="card hot">
+      <div class="nm">AGENTS.md</div>
+      <div class="q">Какие в проекте правила и ритм</div>
+      <div class="d">Человек задаёт правила, агент дописывает новые. Здесь же таблица «Заморожено» - планы, которые человек отверг, чтобы новый агент не тащил их обратно.</div>
+      <div class="w">пишет: человек + агент при новом правиле</div>
+    </div>
+    <div class="card hot">
+      <div class="nm">INDEX.md</div>
+      <div class="q">Где что лежит</div>
+      <div class="d">Точка входа вместо чтения наугад. Без дерева и без истории: только «вопрос - файл». Нет строки для нового файла - каталог врёт.</div>
+      <div class="w">пишет: агент при изменении состава файлов</div>
+    </div>
+    <div class="card">
+      <div class="nm">MAP.md</div>
+      <div class="q">Чем за это платить</div>
+      <div class="d">Только семантика, невидимая из <b>ls</b>: горячие зоны, чужой код, слои без доверия. Дерево проекта здесь не дублируется.</div>
+      <div class="w">пишет: агент при новой опасной зоне</div>
+    </div>
+    <div class="card">
+      <div class="nm">docs/STATE-LOG.md</div>
+      <div class="q">На чём остановились</div>
+      <div class="d">Журнал финалов сессий. Читается с конца. Прошлые записи не переписываются никогда - иначе исчезает единственная память о том, что уже пробовали.</div>
+      <div class="w">пишет: агент в конце каждой работы</div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="ft">Правило</div>
+    <div class="fd">Каждая ссылка в документе должна вести в реальное место. Документ с выдуманными путями хуже отсутствия. Именно это правило исходный комплект нарушал сам: он ссылался на <b>README.md</b>, которого в нём не было - поэтому в 2.0 оно проверяется командой <b>python tools/doc_lint.py</b>.</div>
+  </div>
+</body></html>
